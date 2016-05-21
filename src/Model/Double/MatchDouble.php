@@ -3,17 +3,17 @@
 namespace App\Model\Double;
 
 use App\Model\Contracts\IMatch;
-use App\Model\Dto\Route;
+use App\Model\Domain\RouteDomain;
 
 class MatchDouble implements IMatch{
 
-	public function getPeopleNearOfThis(Route $route) {
+	public function getPeopleNearOfThis(RouteDomain $route) {
 		return [
-			'unit' => 'km',
+			'unit' => $route->getUnit(),
 			'route' => [
-				'startedAt' => 'Street 13123, NY',
-				'endedAt' => 'Streed, 1223, MY',
-				'distance' => '9'
+				'startedAt' => $route->getStringStartAddress(),
+				'endedAt' => $route->getStringEndAddress(),
+				'distance' => $route->getDistance()
 			],
 			'people' => [
 				[

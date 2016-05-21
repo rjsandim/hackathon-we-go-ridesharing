@@ -3,10 +3,12 @@
 namespace App\Model\Domain;
 
 use App\Model\Contracts\IMatch;
-use App\Model\Dto\Route;
+use App\Model\Vo\Route;
 
 class MatcherDomain {
 
+	private $DEFAULT_URL = 'https://maps.googleapis.com/maps/api/geocode/json?';
+	private $API_KEY = 'AIzaSyDBEIpAx7jqtYFT7eUBgPxvg_M4XkDwmHg';
 	private $repository;
 
 	public function __construct(IMatch $repository) {
@@ -14,6 +16,10 @@ class MatcherDomain {
 	}
 
 	public function getMatchFor(Route $route) {
-		return $this->repository->getPeopleNearOfThis($route);
+
+		$routerDomain = new RouteDomain($route);
+
+		return $this->repository->getPeopleNearOfThis($routerDomain);
 	}
+
 }
