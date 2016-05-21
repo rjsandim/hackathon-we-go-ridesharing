@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Controller;
+namespace App\Controller\Webservice;
 
+use App\Controller\AppController;
 use App\Model\Domain\MatcherDomain;
 use App\Model\Double\MatchDouble;
 use App\Model\Dto\Route;

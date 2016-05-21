@@ -22,6 +22,11 @@ use Cake\Core\Plugin;
 use Cake\Routing\RouteBuilder;
 use Cake\Routing\Router;
 
+Router::prefix('webservice', function ($routes) {
+    // All routes here will be prefixed with `/admin`
+    // And have the prefix => admin route element added.
+    $routes->fallbacks('DashedRoute');
+});
 
 /**
  * The default class to use for all routes
