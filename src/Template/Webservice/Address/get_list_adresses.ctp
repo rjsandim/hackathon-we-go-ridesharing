@@ -11,5 +11,5 @@ if (!empty($result)) {
 	}
 }
 
-echo json_encode($addresses);
+echo json_encode(['addresses' => $addresses]);
 
