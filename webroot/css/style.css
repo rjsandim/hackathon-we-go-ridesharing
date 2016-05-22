@@ -1,0 +1,72 @@
+@charset "utf-8";
+* {margin: 0px;padding: 0px;text-decoration: none; list-style: none; font-family: "Open Sans", "sans serif";}
+
+#wrapper{top:0; left:0; bottom:0; right:0; position: absolute; overflow: hidden;}
+
+#background{width: 100vw; height: 100vh; position: fixed; top: 0; z-index: -1; overflow: hidden; background: #FE8C00;}
+
+#myBody{z-index:1; position: absolute; left: 0; top:0; bottom:0; right: 0; border: 0px solid #00FF0B; margin: 51px 0px 0px 0px;}
+
+#topBar{z-index:3; position: fixed; width: 100%; height: 50px; top: 0; border: 0px solid #00FF0B; background: #FE8C00;  box-shadow: 0 3px 10px rgba(0,0,0,0.3);}
+
+#drawer{-webkit-transition: margin-top 0.5s; transition: margin-top 0.5s;margin-top:-400px; z-index:2; position: fixed; width: 500px; height: 280px; background: #ef7700; top:0; right: 0px; box-shadow: 0 3px 5px rgba(0,0,0,0.3); text-align: center;}
+
+#drawDiv{z-index:1;position: absolute; right: 0; width: 50px; height: 50px}
+
+#drawDiv a i{position:absolute; font-size:27px; color:white; top: 50%; left: 50%; transform: translate(-50%,-50%);}
+
+#locationA{
+    display: inline-block;
+    height: 28px;
+    width: 28px;
+    border-radius: 100%;
+    border: 2px solid #7f4600;
+    background-color: ;
+    margin-right: 15px;
+}
+
+#locationB{
+    display: inline-block;
+    height: 28px;
+    width: 28px;
+    border-radius: 100%;
+    border: 2px solid #7f4600;
+    background-color: ;
+    margin-right: 15px;
+}
+
+#drawerWrapper{
+    margin-top: 60px;
+    width: 450px;
+    display: inline-block;
+    color: white;
+}
+
+#drawerWrapper p{
+    font-size: 14px;
+}
+
+.inputLocation{
+    border: none;
+    padding: 0 10px;
+    height: 40px;
+    width: 374px;
+    background-color: #7f4600;
+    color: white;
+}
+
+.sendButton{
+    float: right;
+    height: 30px;
+    width: 130px;
+    background: #7f4600;
+    border: none;
+    color: white;
+    cursor: pointer;
+    text-align: center;
+}
+
+#locationA:hover, #locationB:hover{
+	cursor: pointer;
+}
+
