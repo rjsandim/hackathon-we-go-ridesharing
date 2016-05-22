@@ -2,8 +2,8 @@
 
 namespace App\Model\Contracts;
 
-use App\Model\Domain\RouteDomain;
+use App\Model\Domain\MatcherDomain;
 
 interface IMatch {
-	public function getPeopleNearOfThis(RouteDomain $route);
+	public function getPeopleNearOfThis(MatcherDomain $route);
 }

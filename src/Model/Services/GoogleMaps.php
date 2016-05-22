@@ -19,6 +19,15 @@ class GoogleMaps implements IMaps {
 		return $this->newRequest()->addParameter('origin', 'place_id:'.$startId)->addParameter('destination', 'place_id:'.$endId)->buildDirections();
 	}
 
+	public function getDirectionsBetweenPlaceIdsWithWaypoints($start, $end, array $waypoints) {
+
+		return $this->newRequest()
+			->addParameter('origin', 'place_id:'.$start)
+			->addParameter('destination', 'place_id:'.$end)
+			->addParameter('waypoints', implode('|', $waypoints))
+			->buildDirections();
+	}
+
 	private function newRequest() {
 		$this->parameters = [];
 		$this->addParameter('key', $this->API_KEY);

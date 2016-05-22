@@ -4,6 +4,7 @@ namespace App\Model\Vo;
 
 class Address {
 
+	private $formattedAddress = '';
 	private $postCode = '';
 	private $country = '';
 	private $state = '';
@@ -16,6 +17,7 @@ class Address {
 	private $id = '';
 
 	public function __construct(array $address) {
+		$this->formattedAddress = $address['formatted_address'];
 		$this->postCode = $address['postcode'];
 		$this->country = $address['country'];
 		$this->state = $address['state'];
@@ -26,6 +28,13 @@ class Address {
 		$this->lat = $address['lat'];
 		$this->lng = $address['lng'];
 		$this->id = $address['id'];
+	}
+
+	/**
+	 * @return mixed|string
+	 */
+	public function getFormattedAddress() {
+		return $this->formattedAddress;
 	}
 
 	/**
@@ -108,6 +117,5 @@ class Address {
 
 		return implode(', ', $address);
 	}
-
-
+	
 }

@@ -4,8 +4,8 @@ namespace App\Controller\Webservice;
 
 use App\Controller\AppController;
 use App\Model\Domain\MatcherDomain;
-use App\Model\Double\MatchDouble;
 use App\Model\Vo\Route;
+use Cake\ORM\TableRegistry;
 
 class MatchController extends AppController {
 	/** @var  MatcherDomain */
@@ -14,14 +14,17 @@ class MatchController extends AppController {
 	public function initialize() {
 		parent::initialize();
 		$this->viewBuilder()->layout('ajax');
-		
-		$this->match = new MatcherDomain(new MatchDouble());
+
+		$routes = TableRegistry::get('Routes');
+		$this->match = new MatcherDomain($routes);
 	}
 
 	public function getPeopleNearby($initLat, $initLon, $endAddress = null) {
 		$route = new Route($initLat, $initLon, $endAddress);
+		
 		$result = $this->match->getMatchFor($route);
-		$this->set("peoplesNearOfMe", $result);
+		
+		$this->set(compact("result"));
 	}
 
 

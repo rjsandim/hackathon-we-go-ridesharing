@@ -14,8 +14,7 @@ class AddressDomain {
 
 	public function getListAddresses($address) {
 
-		$var = $this->mapsService->getPossibleAddresses($address);
-		return $var;
+		return $this->mapsService->getPossibleAddresses($address);
 	}
 
 }

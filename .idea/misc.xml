@@ -10,7 +10,6 @@
       <PhpUnitSettings load_method="PHPUNIT_PHAR" custom_loader_path="" phpunit_phar_path="/Applications/MAMP/bin/php/php5.5.26/lib/phpunit-4.8.9.phar" />
     </phpunit_settings>
   </component>
-  <component name="PhpXdebugProxy" ide_key="PHPSTORM" host="localhost" port="9000" />
   <component name="ProjectInspectionProfilesVisibleTreeState">
     <entry key="Project Default">
       <profile-state>
