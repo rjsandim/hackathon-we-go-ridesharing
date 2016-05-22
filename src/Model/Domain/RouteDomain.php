@@ -2,22 +2,22 @@
 
 namespace App\Model\Domain;
 
+use App\Model\Contracts\IMaps;
 use App\Model\Vo\Address;
 use App\Model\Vo\Route;
 
 class RouteDomain {
 
-	private $GEOCODE_URL = 'https://maps.googleapis.com/maps/api/geocode/json?';
-	private $DIRECTIONS_URL = 'https://maps.googleapis.com/maps/api/directions/json?';
-	private $API_KEY = 'AIzaSyDBEIpAx7jqtYFT7eUBgPxvg_M4XkDwmHg';
-
+	private $maps;
 	private $start;
 	private $end;
 	private $distance;
 	private $unit;
 	private $peopleNearby;
 
-	public function __construct(Route $route) {
+	public function __construct(Route $route, IMaps $maps) {
+
+		$this->maps = $maps;
 
 		if ($route->isAddressRoute()) {
 			$this->start = $this->getPositionsForAddress($route->getStartAddress());
@@ -30,13 +30,7 @@ class RouteDomain {
 
 	private function getPositionsForAddress($address) {
 
-		$url = $this->GEOCODE_URL.'address='.urlencode($address).'&key='.$this->API_KEY;
-		$json = file_get_contents($url);
-		$result = json_decode($json);
-
-		if ($result->status != 'OK') {
-			return null;
-		}
+		$result = $this->maps->getPossibleAddresses($address);
 
 		$firstResult = $result->results[0];
 		$placeId = $firstResult->place_id;
@@ -72,10 +66,7 @@ class RouteDomain {
 	}
 
 	private function getDistanceBetween(Address $start, Address $end)  {
-		$url = $this->DIRECTIONS_URL.'origin=place_id:'.$start->getId().'&destination=place_id:'.$end->getId().'&key='.$this->API_KEY;
-		$json = file_get_contents($url);
-		$result = json_decode($json);
-
+		$result = $this->maps->getDirectionsBetweenPlaceIds($start->getId(), $end->getId());
 		return $result->routes[0]->legs[0]->distance->value;
 	}
 
@@ -94,6 +85,6 @@ class RouteDomain {
 	public function getStringEndAddress() {
 		return $this->end->toString();
 	}
-	
+
 }
 
