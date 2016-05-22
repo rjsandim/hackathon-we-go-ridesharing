@@ -13,7 +13,7 @@ class RouteDomain {
 	private $end;
 	private $distance;
 	private $unit;
-	private $peopleNearby;
+
 
 	public function __construct(Route $route, IMaps $maps) {
 
@@ -27,6 +27,8 @@ class RouteDomain {
 		$this->distance = $this->getDistanceBetween($this->start, $this->end);
 		$this->unit = 'meters';
 	}
+
+
 
 	private function getPositionsForAddress($address) {
 
@@ -68,6 +70,11 @@ class RouteDomain {
 	private function getDistanceBetween(Address $start, Address $end)  {
 		$result = $this->maps->getDirectionsBetweenPlaceIds($start->getId(), $end->getId());
 		return $result->routes[0]->legs[0]->distance->value;
+	}
+
+	private function getPeoplenNearby($start, $end) {
+
+
 	}
 
 	public function getUnit() {
