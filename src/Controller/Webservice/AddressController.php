@@ -16,8 +16,13 @@ class AddressController extends AppController {
 		$this->address = new AddressDomain();
 	}
 
-	public function getListAdresses($address) {
-		$result = $this->address->getListAddresses($address);
+	public function getListAdresses($address = null) {
+
+		$result = [];
+
+		if ($address != null) {
+			$result = $this->address->getListAddresses($address);
+		}
 
 		$this->set(compact("result"));
 	}
